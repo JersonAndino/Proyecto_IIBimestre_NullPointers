@@ -9,8 +9,13 @@ package proyecto_iibimestre_nullpointers;
  *
  * @author Jerson Andino
  */
-public class Persona {
+public class  Persona {
     public String nombre;
     public String apellido;
     //prueba
+
+    public Persona(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
 }
