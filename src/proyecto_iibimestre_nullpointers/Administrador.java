@@ -12,10 +12,11 @@ package proyecto_iibimestre_nullpointers;
 public class Administrador extends Persona {
     private int codigo;
 
-    public Administrador(String nombre,String apellido,int codigo) {
-        this.codigo = codigo;
-        this.nombre= nombre;
-        this.apellido= apellido;
+    public Administrador(String nombre, String apellido,int codigo) {
+        super(nombre, apellido);
+        this.codigo=codigo;
     }
+
+ 
     
 }
