@@ -10,5 +10,6 @@ package proyecto_iibimestre_nullpointers;
  * @author Jerson Andino
  */
 public class Persona {
-    private String nombre;    
+    private String nombre;
+    private String apellido;
 }
