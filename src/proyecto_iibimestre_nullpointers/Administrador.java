@@ -10,6 +10,6 @@ package proyecto_iibimestre_nullpointers;
  * @author Usuario
  */
 public class Administrador extends Persona {
-    private int coidgo;
+    private int codigo;
     
 }
