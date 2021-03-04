@@ -7,14 +7,15 @@ package proyecto_iibimestre_nullpointers;
 
 /**
  *
- * @author R O G
+ * @author Eduardo
  */
-public class Vendedor extends Empleado{
+public class Tecnico extends Empleado{
     private double comision;
 
-    public Vendedor(double comision) {
+    public Tecnico(double comision) {
         this.comision = comision;
     }
+    
     @Override
     public double Sueldo(){
         return comision * ventas;
