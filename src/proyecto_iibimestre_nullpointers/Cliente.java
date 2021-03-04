@@ -9,6 +9,6 @@ package proyecto_iibimestre_nullpointers;
  *
  * @author Jerson Andino
  */
-public class Persona {
-    private String nombre;    
+public class Cliente extends Persona{
+    private String cedula;    
 }
