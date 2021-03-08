@@ -13,10 +13,14 @@ public class Cliente extends Persona{
    private String numeroTelefonico;
    private String Direccion;
 
-    public Cliente(String numeroTelefonico, String Direccion, String nombre, String apellido) {
-        super(nombre, apellido);
+    public Cliente(String numeroTelefonico, String Direccion, String nombre, String apellido, String cedula) {
+        super(nombre, apellido, cedula);
         this.numeroTelefonico = numeroTelefonico;
         this.Direccion = Direccion;
     }
+
+    
+
+   
    
 }

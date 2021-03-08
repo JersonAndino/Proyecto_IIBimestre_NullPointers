@@ -9,8 +9,15 @@ package proyecto_iibimestre_nullpointers;
  *
  * @author Eduardo
  */
-public abstract class Empleado {
-    private String codigo;
+public abstract class Empleado extends Persona {
+    protected String codigo;
     protected double ventas;
     public abstract double Sueldo();
+
+    public Empleado(String codigo, double ventas, String nombre, String apellido, String cedula) {
+        super(nombre, apellido, cedula);
+        this.codigo = codigo;
+        this.ventas = ventas;
+    }
+    
 }

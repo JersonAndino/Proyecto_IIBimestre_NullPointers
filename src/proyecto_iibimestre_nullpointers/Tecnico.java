@@ -12,9 +12,13 @@ package proyecto_iibimestre_nullpointers;
 public class Tecnico extends Empleado{
     private double comision;
 
-    public Tecnico(double comision) {
+    public Tecnico(double comision, String codigo, double ventas, String nombre, String apellido, String cedula) {
+        super(codigo, ventas, nombre, apellido, cedula);
         this.comision = comision;
     }
+
+  
+   
     
     @Override
     public double Sueldo(){

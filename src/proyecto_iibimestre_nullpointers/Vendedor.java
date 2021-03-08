@@ -12,9 +12,11 @@ package proyecto_iibimestre_nullpointers;
 public class Vendedor extends Empleado{
     private double comision;
 
-    public Vendedor(double comision) {
+    public Vendedor(double comision, String codigo, double ventas, String nombre, String apellido, String cedula) {
+        super(codigo, ventas, nombre, apellido, cedula);
         this.comision = comision;
     }
+
     @Override
     public double Sueldo(){
         return comision * ventas;

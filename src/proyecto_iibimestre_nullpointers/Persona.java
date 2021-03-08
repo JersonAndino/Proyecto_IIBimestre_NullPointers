@@ -13,10 +13,13 @@ public class  Persona {
     protected String nombre;
     protected String apellido;
     protected String cedula;
-    //prueba
 
-    public Persona(String nombre, String apellido) {
+    public Persona(String nombre, String apellido, String cedula) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.cedula = cedula;
     }
+   
+
+   
 }
