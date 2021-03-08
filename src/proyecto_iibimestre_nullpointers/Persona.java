@@ -10,8 +10,8 @@ package proyecto_iibimestre_nullpointers;
  * @author Jerson Andino
  */
 public class  Persona {
-    public String nombre;
-    public String apellido;
+    protected String nombre;
+    protected String apellido;
     //prueba
 
     public Persona(String nombre, String apellido) {
