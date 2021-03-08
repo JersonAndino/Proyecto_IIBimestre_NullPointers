@@ -10,9 +10,13 @@ package proyecto_iibimestre_nullpointers;
  * @author Jerson Andino
  */
 public class Cliente extends Persona{
-    private String cedula;    
+   private String numeroTelefonico;
+   private String Direccion;
 
-    public Cliente(String nombre, String apellido,String cedula) {
+    public Cliente(String numeroTelefonico, String Direccion, String nombre, String apellido) {
         super(nombre, apellido);
+        this.numeroTelefonico = numeroTelefonico;
+        this.Direccion = Direccion;
     }
+   
 }

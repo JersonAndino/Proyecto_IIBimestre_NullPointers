@@ -12,6 +12,7 @@ package proyecto_iibimestre_nullpointers;
 public class  Persona {
     protected String nombre;
     protected String apellido;
+    protected String cedula;
     //prueba
 
     public Persona(String nombre, String apellido) {

@@ -9,6 +9,11 @@ package proyecto_iibimestre_nullpointers;
  *
  * @author R O G
  */
-public class Accesorios extends Computador{
+public class Accesorio extends Computador{
+
+    public Accesorio(String Modelo, double precio, String nombre) {
+        super(Modelo, precio, nombre);
+    }
+    
     
 }
