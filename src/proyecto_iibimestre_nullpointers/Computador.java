@@ -11,6 +11,6 @@ package proyecto_iibimestre_nullpointers;
  */
 public class Computador {
     protected String Modelo;
-    
-    
+    protected double precio;
+    protected String nombre;
 }
