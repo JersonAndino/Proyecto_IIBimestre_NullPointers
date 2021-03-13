@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package proyecto_iibimestre_nullpointers;
+package clases;
 
 import java.util.ArrayList;
 
@@ -11,6 +11,7 @@ import java.util.ArrayList;
  *
  * @author R O G
  */
-public class ListaComputador {
-    ArrayList<Computador> ListC = new ArrayList<Computador>();
+public class ListaAcessorio {
+    ArrayList<Accesorio> ListAcc = new ArrayList<Accesorio>(); 
+        
 }
