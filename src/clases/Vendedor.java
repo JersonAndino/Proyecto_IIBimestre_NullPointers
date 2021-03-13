@@ -11,14 +11,15 @@ package clases;
  */
 public class Vendedor extends Empleado{
     private double comision;
-
-    public Vendedor(String codigo, double ventas, String nombre, String apellido, String cedula) {
-        super(codigo, ventas, nombre, apellido, cedula);
-    }
+    static int contador=1;
+    private String codigo;
+   
     
     public Vendedor(double comision, String codigo, double ventas, String nombre, String apellido, String cedula) {
-        super(codigo, ventas, nombre, apellido, cedula);
+        super( ventas, nombre, apellido, cedula);
+        this.codigo="VNT"+contador;
         this.comision = comision;
+        contador++;
     }
 
     @Override
