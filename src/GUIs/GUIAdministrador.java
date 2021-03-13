@@ -272,7 +272,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562");        
         Vendedor e1 =new Vendedor (0.1,"VTN01",0,"Daniel","Perez","197845697");
-        //cd
+        
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
