@@ -10,15 +10,24 @@ package clases;
  * @author Usuario
  */
 public class Administrador extends Persona{
-    private int codigo;
+    private String codigo;
 
-    public Administrador(int codigo, String nombre, String apellido, String cedula) {
+    public Administrador(String codigo, String nombre, String apellido, String cedula) {
         super(nombre, apellido, cedula);
         this.codigo = codigo;
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
     
 
    
+
+    
+    
+    
 
  
     
