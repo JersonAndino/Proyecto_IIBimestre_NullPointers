@@ -68,6 +68,12 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel2.setText("Código:");
 
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("NUEVO EMPLEADO"));
 
         jLabel3.setText("Tipo:");
@@ -333,7 +339,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     
         Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562"); 
-        ListaEmpleados ListEmpleado = new ListaEmpleados();
+              ListaEmpleados ListEmpleado = new ListaEmpleados();
         
     if(cbmTipo.getSelectedItem().equals("Vendedor")){
         
@@ -389,6 +395,10 @@ public class GUIAdministrador extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnDesvincularActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUIs;
+
 import java.util.ArrayList;
 import clases.Empresa;
 import clases.Administrador;
@@ -19,6 +20,7 @@ import clases.Parte;
  * @author Jerson Andino
  */
 public class GUIHome extends javax.swing.JFrame {
+
     Empresa miEmpresa;
     Administrador admin;
     ArrayList<Persona> personas;
@@ -35,7 +37,7 @@ public class GUIHome extends javax.swing.JFrame {
         personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222"));
         equipos = new ArrayList<>();
         equipos.add(new Accesorio("3000", 25, "BLABLA"));
-        equipos.add(new Parte("2000", 35, "jhjh"));  
+        equipos.add(new Parte("2000", 35, "jhjh"));
         miEmpresa = new Empresa(admin, personas, equipos);
     }
 
@@ -48,43 +50,124 @@ public class GUIHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btgTipo = new javax.swing.ButtonGroup();
+        pnlTipo = new javax.swing.JPanel();
+        rbtAdministrador = new javax.swing.JRadioButton();
+        rbtMantenimiento = new javax.swing.JRadioButton();
+        rbtVenta = new javax.swing.JRadioButton();
+        btnGuardar = new javax.swing.JButton();
+        lblUsuario = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        lblContrasena = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pnlTipo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black), "Tipo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+
+        btgTipo.add(rbtAdministrador);
+        rbtAdministrador.setText("Administrador");
+
+        btgTipo.add(rbtMantenimiento);
+        rbtMantenimiento.setText("Mantenimiento");
+
+        btgTipo.add(rbtVenta);
+        rbtVenta.setText("Venta");
+
+        javax.swing.GroupLayout pnlTipoLayout = new javax.swing.GroupLayout(pnlTipo);
+        pnlTipo.setLayout(pnlTipoLayout);
+        pnlTipoLayout.setHorizontalGroup(
+            pnlTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTipoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(rbtAdministrador)
+                .addGap(66, 66, 66)
+                .addComponent(rbtMantenimiento)
+                .addGap(75, 75, 75)
+                .addComponent(rbtVenta)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        pnlTipoLayout.setVerticalGroup(
+            pnlTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTipoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlTipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtAdministrador)
+                    .addComponent(rbtMantenimiento)
+                    .addComponent(rbtVenta)))
+        );
+
+        btnGuardar.setText("Ingresar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnGuardarActionPerformed(evt);
             }
         });
+
+        lblUsuario.setText("Usuario:");
+
+        lblContrasena.setText("Contraseña:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(281, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(235, 235, 235))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblUsuario)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtUsuario)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblContrasena)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(183, 183, 183)
+                .addComponent(btnGuardar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(221, 221, 221)
-                .addComponent(jButton1)
-                .addContainerGap(255, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblContrasena)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(pnlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGuardar)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        GUIVenta ventana = new GUIVenta();
-        this.setVisible(false);
-        ventana.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (rbtAdministrador.isSelected()) {
+            GUIAdministrador administrador = new GUIAdministrador();
+            this.setVisible(false);
+            administrador.setVisible(true);
+        }
+        if (rbtMantenimiento.isSelected()) {
+            GUIMantenimiento mantenimiento = new GUIMantenimiento();
+            this.setVisible(false);
+            mantenimiento.setVisible(true);
+        }
+        if (rbtVenta.isSelected()) {
+            GUIVenta ventana = new GUIVenta();
+            this.setVisible(false);
+            ventana.setVisible(true);
+        }
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +208,15 @@ public class GUIHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.ButtonGroup btgTipo;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JLabel lblContrasena;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPanel pnlTipo;
+    private javax.swing.JRadioButton rbtAdministrador;
+    private javax.swing.JRadioButton rbtMantenimiento;
+    private javax.swing.JRadioButton rbtVenta;
+    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
