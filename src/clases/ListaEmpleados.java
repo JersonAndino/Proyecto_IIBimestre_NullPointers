@@ -16,6 +16,10 @@ public class ListaEmpleados {
 	public ListaEmpleados() {
 		ListEmpleado =new ArrayList<Empleado>();
 	}
+
+    public void setListEmpleado(ArrayList<Empleado> ListEmpleado) {
+        this.ListEmpleado = ListEmpleado;
+    }
         
         public void AgregarEmpleado(Empleado e1) {
 		ListEmpleado.add(e1);

@@ -13,18 +13,24 @@ import clases.Orden;
 import clases.Tecnico;
 import clases.Vendedor;
 import javax.swing.JOptionPane;
+import clases.Datos;
 
 /**
  *
  * @author R O G
  */
 public class GUIAdministrador extends javax.swing.JFrame {
+    Datos misDatos;
+    ListaEmpleados empleados;
 
     /**
      * Creates new form GUIAdministrador
      */
     public GUIAdministrador() {
         initComponents();
+        GUIHome ventana = new GUIHome();
+        misDatos = ventana.misDatos;
+        empleados.setListEmpleado(misDatos.getPersonas());
     }
 
     /**
@@ -346,19 +352,21 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     
-        Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562"); 
+    Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562"); 
               ListaEmpleados ListEmpleado = new ListaEmpleados();
         
     if(cbmTipo.getSelectedItem().equals("Vendedor")){
         
         Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
-        ListEmpleado.AgregarEmpleado(e1);
+        //ListEmpleado.AgregarEmpleado(e1);
+        empleados.AgregarEmpleado(e1);
     
     }
      if(cbmTipo.getSelectedItem().equals("Técnico")){
          
          Tecnico t1= new Tecnico(0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
-         ListEmpleado.AgregarEmpleado(t1);
+         //ListEmpleado.AgregarEmpleado(t1);
+         empleados.AgregarEmpleado(t1);
      }   
         
         
@@ -392,13 +400,8 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
     private void btnDesvincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesvincularActionPerformed
        
-        ListaEmpleados ListEmpleado = new ListaEmpleados();
-        ListEmpleado.EliminarEmpleado(txtCedDespido.getText());
-        
-        
-        
-        
-        
+        //ListaEmpleados ListEmpleado = new ListaEmpleados();
+        empleados.EliminarEmpleado(txtCedDespido.getText());       
         
         
         

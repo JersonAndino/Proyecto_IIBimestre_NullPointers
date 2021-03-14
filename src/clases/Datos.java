@@ -9,13 +9,13 @@ import java.util.ArrayList;
  *
  * @author Jerson Andino
  */
-public class Empresa {
+public class Datos {
     private Administrador admin;
-    private ArrayList<Persona> personas = new ArrayList<>();
+    private ArrayList<Empleado> personas = new ArrayList<>();
     private ArrayList<Computador> equipos = new ArrayList<>();
     private ArrayList<Venta> ventas = new ArrayList<>();
     
-    public Empresa(Administrador admin, ArrayList<Persona> personas, ArrayList<Computador> equipos){
+    public Datos(Administrador admin, ArrayList<Empleado> personas, ArrayList<Computador> equipos){
         this.admin = admin;
         this.equipos = equipos;
         this.personas = personas;
@@ -25,7 +25,7 @@ public class Empresa {
         return admin;
     }
 
-    public ArrayList<Persona> getPersonas() {
+    public ArrayList<Empleado> getPersonas() {
         return personas;
     }
 

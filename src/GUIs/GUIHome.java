@@ -6,13 +6,14 @@
 package GUIs;
 
 import java.util.ArrayList;
-import clases.Empresa;
+import clases.Datos;
 import clases.Administrador;
 import clases.Persona;
 import clases.Computador;
 import clases.Vendedor;
 import clases.Tecnico;
 import clases.Accesorio;
+import clases.Empleado;
 import clases.Parte;
 
 /**
@@ -21,9 +22,9 @@ import clases.Parte;
  */
 public class GUIHome extends javax.swing.JFrame {
 
-    Empresa miEmpresa;
+    Datos misDatos;
     Administrador admin;
-    ArrayList<Persona> personas;
+    ArrayList<Empleado> personas;
     ArrayList<Computador> equipos;
 
     /**
@@ -31,14 +32,22 @@ public class GUIHome extends javax.swing.JFrame {
      */
     public GUIHome() {
         initComponents();
-        admin = new Administrador("1234", "Jerson", "Andino", "1004998678");
-        personas = new ArrayList<>();
-        personas.add(new Vendedor(0.1, 0, "Juan", "Perez", "1004897564"));
-        personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222"));
-        equipos = new ArrayList<>();
-        equipos.add(new Accesorio("3000", 25, "BLABLA"));
-        equipos.add(new Parte("2000", 35, "jhjh"));
-        miEmpresa = new Empresa(admin, personas, equipos);
+        GUIAdministrador ventana = new GUIAdministrador();
+        if(ventana.misDatos == null){
+            admin = new Administrador("1234", "Jerson", "Andino", "1004998678");
+            personas = new ArrayList<>();
+            personas.add(new Vendedor(0.1, 0, "Juan", "Perez", "1004897564"));
+            personas.add(new Vendedor(0.1, 0, "Pedrin", "Perez", "12"));
+            personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222"));
+            equipos = new ArrayList<>();
+            equipos.add(new Accesorio("3000", 25, "BLABLA"));
+            equipos.add(new Parte("2000", 35, "jhjh"));
+            misDatos = new Datos(admin, personas, equipos);
+        }
+        else{
+            misDatos = ventana.misDatos;
+        }
+        
     }
 
     /**
