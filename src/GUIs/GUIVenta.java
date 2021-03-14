@@ -29,6 +29,8 @@ Empresa miEmpresa;
      */
     public GUIVenta() {
         initComponents();
+        GUIHome ventana = new GUIHome();
+        this.miEmpresa = ventana.miEmpresa;
         modeloTblProd = new DefaultTableModel();
         modeloTblDetalle = new DefaultTableModel();
         modeloTblProd.addColumn("Codigo");
@@ -41,8 +43,6 @@ Empresa miEmpresa;
         modeloTblDetalle.addColumn("Precio");
         modeloTblDetalle.addColumn("Cantidad");
         tblDetalle.setModel(modeloTblDetalle);
-        GUIHome ventana = new GUIHome();
-        this.miEmpresa = ventana.miEmpresa;
         /*for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
             String nombre = miEmpresa.getEquipos().get(i).getNombre();
             String modelo = miEmpresa.getEquipos().get(i).getModelo();
@@ -293,7 +293,14 @@ Empresa miEmpresa;
     private void rbnAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnAccesorioActionPerformed
         // TODO add your handling code here:
         try{
-            
+            for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
+                if(miEmpresa.getEquipos().get(i) instanceof Accesorio){
+                    String nombre = miEmpresa.getEquipos().get(i).getNombre();
+                    String modelo = miEmpresa.getEquipos().get(i).getModelo();
+                    double precio = miEmpresa.getEquipos().get(i).getPrecio();
+                    modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});                        
+                }                    
+            }
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
