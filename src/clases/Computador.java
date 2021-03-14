@@ -31,6 +31,11 @@ public class Computador {
     public double getPrecio() {
         return precio;
     }
+
+    @Override
+    public String toString() {
+        return "Equipo: Modelo: " + Modelo + ", Precio: " + precio + ", Nombre: " + nombre;
+    }
     
     
     

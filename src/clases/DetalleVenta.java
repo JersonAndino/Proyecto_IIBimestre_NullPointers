@@ -33,6 +33,12 @@ public class DetalleVenta {
     public double getPrecioTotal() {
         return precioTotal;
     }
+
+    @Override
+    public String toString() {
+        return "Detalle: Equipo: " + detalle + ", Cantidad: " + cantidad + ", SubTotal: " + precioTotal + '}';
+    }
+    
     
     
     

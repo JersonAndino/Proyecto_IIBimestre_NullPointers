@@ -26,4 +26,10 @@ public class Vendedor extends Empleado{
     public double Sueldo(){
         return 450+(comision * ventas);
     }
+
+    @Override
+    public String toString() {
+        return "Vendedor: " + super.toString();
+    } 
+    
 }

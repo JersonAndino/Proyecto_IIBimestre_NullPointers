@@ -13,11 +13,13 @@ import java.util.ArrayList;
  */
 public class Venta {
     private int numVenta;
+    private Cliente cliente;
     private Vendedor vendedor;    
     private ArrayList<DetalleVenta> detalles = new ArrayList<>();
     private double totalVenta;
         
-    public Venta(int numVenta, Vendedor vendedor, ArrayList<DetalleVenta> detalles){
+    public Venta(int numVenta, Vendedor vendedor, ArrayList<DetalleVenta> detalles, Cliente cliente){
+        this.cliente = cliente;
         this.numVenta = numVenta;
         this.vendedor = vendedor;
         this.detalles = detalles;
@@ -27,5 +29,11 @@ public class Venta {
         }
         this.totalVenta = sum;
     }
+
+    @Override
+    public String toString() {
+        return "Venta: NumVenta: " + numVenta + "\nCliente: " + cliente + "\nVendedor: " + vendedor + "\nDetalles: " + detalles + "\nTotalVenta: " + totalVenta + '}';
+    }
+    
         
 }

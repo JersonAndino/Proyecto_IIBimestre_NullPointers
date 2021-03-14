@@ -19,6 +19,11 @@ public class Cliente extends Persona{
         this.Direccion = Direccion;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente: " + super.toString() +  "NumeroTelefonico: " + numeroTelefonico + ", Direccion=" + Direccion;
+    }
+
     
 
    
