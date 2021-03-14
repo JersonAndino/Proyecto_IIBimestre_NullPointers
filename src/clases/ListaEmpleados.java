@@ -16,5 +16,19 @@ public class ListaEmpleados {
 	public ListaEmpleados() {
 		ListEmpleado =new ArrayList<Empleado>();
 	}
+        
+        public void AgregarEmpleado(Empleado e1) {
+		ListEmpleado.add(e1);
+	}
+	public void EliminarPersona(String vcedula) {
+		for (Empleado e1:ListEmpleado) {
+			if(e1 instanceof Vendedor ){
+                            
+                            if((e1.getCedula()).equals(vcedula))
+				ListEmpleado.remove(e1);
+                        
+                        }
+		}
+	}
     
 }

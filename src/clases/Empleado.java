@@ -19,5 +19,38 @@ public abstract class Empleado extends Persona {
       
         this.ventas = ventas;
     }
+
+    public double getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(double ventas) {
+        this.ventas = ventas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
     
 }
