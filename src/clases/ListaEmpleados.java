@@ -36,6 +36,10 @@ public class ListaEmpleados {
                         }
 		}
 	}
+
+    public ArrayList<Empleado> getListEmpleado() {
+        return ListEmpleado;
+    }
         
     
 }

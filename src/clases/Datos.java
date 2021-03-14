@@ -36,6 +36,18 @@ public class Datos {
     public ArrayList<Venta> getVentas() {
         return ventas;
     }
+
+    public void setPersonas(ArrayList<Empleado> personas) {
+        this.personas = personas;
+    }
+
+    public void setEquipos(ArrayList<Computador> equipos) {
+        this.equipos = equipos;
+    }
+
+    public void setVentas(ArrayList<Venta> ventas) {
+        this.ventas = ventas;
+    }
     
     
 }
