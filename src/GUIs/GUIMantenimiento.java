@@ -5,10 +5,13 @@
  */
 package GUIs;
 
-import java.awt.Color;
+import clases.Mantenimiento;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +21,16 @@ import javax.swing.JPanel;
 public class GUIMantenimiento extends javax.swing.JFrame {
 
     FondoFrame fondo = new FondoFrame();
+    ArrayList<Mantenimiento>clientes = new ArrayList<>();
+    String NM;
+    String AM;
+    String CM;
+    String NTM;
+    String DM;
+    String PM;
+    double PrM;
+    String FM;
+    String DuM;
     public GUIMantenimiento() {
         this.setContentPane(fondo);
         initComponents();
@@ -93,29 +106,27 @@ public class GUIMantenimiento extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtDireccion4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtNumTelefono4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel31)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel30)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCedula4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel19)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(149, 149, 149)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCedula4, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,6 +175,11 @@ public class GUIMantenimiento extends javax.swing.JFrame {
         jLabel11.setText("Duración del mantenimiento");
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,6 +253,35 @@ public class GUIMantenimiento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        if(txtNombre4.getText().length()==0 || txtApellido4.getText().length()==0 || txtCedula4.getText().length()==0 ||
+                txtNumTelefono4.getText().length()==0 || txtDireccion4.getText().length()==0 || txtaProblema.getText().length()==0
+                || txtPrecio.getText().length()==0 || txtFecha.getText().length()==0 || txtDuracion.getText().length()==0){
+            JOptionPane.showMessageDialog(null,"Ingrese los datos necesarios para registrar", "Campos vacíos", INFORMATION_MESSAGE);
+        }
+        else{
+            NM = txtNombre4.getText();
+            AM = txtApellido4.getText();
+            CM = txtCedula4.getText();
+            NTM = txtNumTelefono4.getText();
+            DM = txtDireccion4.getText();
+            PM = txtaProblema.getText();
+            PrM = Double.parseDouble(txtPrecio.getText());
+            FM = txtFecha.getText();
+            DuM = txtDuracion.getText();
+            clientes.add(new Mantenimiento(PM, PrM, FM, DuM, NTM, DM, NM, AM, CM));
+            txtNombre4.setText(null);
+            txtApellido4.setText(null);
+            txtCedula4.setText(null);
+            txtNumTelefono4.setText(null);
+            txtDireccion4.setText(null);
+            txtaProblema.setText(null);
+            txtPrecio.setText(null);
+            txtFecha.setText(null);
+            txtDuracion.setText(null);
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+   
     /**
      * @param args the command line arguments
      */
@@ -279,66 +324,22 @@ public class GUIMantenimiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtApellido1;
-    private javax.swing.JTextField txtApellido2;
-    private javax.swing.JTextField txtApellido3;
     private javax.swing.JTextField txtApellido4;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCedula1;
-    private javax.swing.JTextField txtCedula2;
-    private javax.swing.JTextField txtCedula3;
     private javax.swing.JTextField txtCedula4;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtDireccion1;
-    private javax.swing.JTextField txtDireccion2;
-    private javax.swing.JTextField txtDireccion3;
     private javax.swing.JTextField txtDireccion4;
     private javax.swing.JTextField txtDuracion;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
-    private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtNombre3;
     private javax.swing.JTextField txtNombre4;
-    private javax.swing.JTextField txtNumTelefono;
-    private javax.swing.JTextField txtNumTelefono1;
-    private javax.swing.JTextField txtNumTelefono2;
-    private javax.swing.JTextField txtNumTelefono3;
     private javax.swing.JTextField txtNumTelefono4;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextArea txtaProblema;
