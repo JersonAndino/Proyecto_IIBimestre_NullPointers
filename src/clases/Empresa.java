@@ -13,6 +13,7 @@ public class Empresa {
     private Administrador admin;
     private ArrayList<Persona> personas = new ArrayList<>();
     private ArrayList<Computador> equipos = new ArrayList<>();
+    private ArrayList<Venta> ventas = new ArrayList<>();
     
     public Empresa(Administrador admin, ArrayList<Persona> personas, ArrayList<Computador> equipos){
         this.admin = admin;
@@ -30,6 +31,10 @@ public class Empresa {
 
     public ArrayList<Computador> getEquipos() {
         return equipos;
+    }
+
+    public ArrayList<Venta> getVentas() {
+        return ventas;
     }
     
     

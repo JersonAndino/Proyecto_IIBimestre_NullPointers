@@ -13,8 +13,11 @@ import clases.Computador;
 import clases.Vendedor;
 import clases.Tecnico;
 import clases.Accesorio;
+import clases.DetalleVenta;
 import clases.Parte;
+import clases.Venta;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -23,6 +26,7 @@ import javax.swing.JOptionPane;
 public class GUIVenta extends javax.swing.JFrame {
 DefaultTableModel modeloTblProd, modeloTblDetalle;
 Empresa miEmpresa;
+DefaultComboBoxModel modeloCombo;
 
     /**
      * Creates new form GUIVenta
@@ -42,13 +46,14 @@ Empresa miEmpresa;
         modeloTblDetalle.addColumn("Nombre");
         modeloTblDetalle.addColumn("Precio");
         modeloTblDetalle.addColumn("Cantidad");
+        modeloTblDetalle.addColumn("Precio total");
         tblDetalle.setModel(modeloTblDetalle);
-        /*for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
-            String nombre = miEmpresa.getEquipos().get(i).getNombre();
-            String modelo = miEmpresa.getEquipos().get(i).getModelo();
-            double precio = miEmpresa.getEquipos().get(i).getPrecio();
-            modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});
-        }*/
+        modeloCombo =  new DefaultComboBoxModel();
+        for(int i= 0; i < miEmpresa.getPersonas().size(); i++){
+            if(miEmpresa.getPersonas().get(i) instanceof Vendedor)
+                modeloCombo.addElement(miEmpresa.getPersonas().get(i).getCedula());
+        }
+        cmbVendedor.setModel(modeloCombo);
     }
 
     /**
@@ -61,7 +66,7 @@ Empresa miEmpresa;
     private void initComponents() {
 
         lblVendedor = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbVendedor = new javax.swing.JComboBox<>();
         lblTipoProducto = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductos = new javax.swing.JTable();
@@ -80,6 +85,9 @@ Empresa miEmpresa;
         rbnAccesorio = new javax.swing.JRadioButton();
         rbnParte = new javax.swing.JRadioButton();
         rbnComputador = new javax.swing.JRadioButton();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnVender = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -90,7 +98,7 @@ Empresa miEmpresa;
 
         lblVendedor.setText("Vendedor:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblTipoProducto.setText("Producto:");
 
@@ -148,8 +156,6 @@ Empresa miEmpresa;
 
         lblCantidad.setText("Cantidad:");
 
-        txtCantidad.setText("jTextField1");
-
         rbnAccesorio.setText("Accesorios");
         rbnAccesorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,53 +164,91 @@ Empresa miEmpresa;
         });
 
         rbnParte.setText("Partes");
+        rbnParte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnParteActionPerformed(evt);
+            }
+        });
 
         rbnComputador.setText("Computador");
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnVender.setText("Vender");
+        btnVender.setToolTipText("");
+        btnVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVenderActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTipoProducto)
-                    .addComponent(lblVendedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSeleccionar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTipoProducto)
+                            .addComponent(lblVendedor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSeleccionar)
+                            .addComponent(cmbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbnAccesorio)
                                 .addGap(55, 55, 55)
                                 .addComponent(rbnParte)
                                 .addGap(70, 70, 70)
-                                .addComponent(rbnComputador))))
+                                .addComponent(rbnComputador))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblPrecio)
+                                    .addComponent(lblCodigo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                    .addComponent(txtPrecio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblNombre)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCantidad)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCantidad)))
+                                .addGap(61, 61, 61)
+                                .addComponent(btnAgregar))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPrecio)
-                            .addComponent(lblCodigo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(txtPrecio))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(78, 78, 78)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCantidad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(61, 61, 61)
-                        .addComponent(btnAgregar)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                            .addComponent(btnEliminar)
+                            .addComponent(btnModificar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(btnVender)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,16 +256,16 @@ Empresa miEmpresa;
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVendedor)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoProducto)
                     .addComponent(rbnAccesorio)
                     .addComponent(rbnParte)
                     .addComponent(rbnComputador))
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(btnSeleccionar)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -240,9 +284,17 @@ Empresa miEmpresa;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(btnAgregar)))
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)
+                        .addGap(16, 16, 16))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnVender)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,55 +302,45 @@ Empresa miEmpresa;
 
     private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         // TODO add your handling code here:
-        int index = tblProductos.getSelectedRow();
-        txtCodigo.setText((String)modeloTblProd.getValueAt(index, 0));
-        txtNombre.setText((String)modeloTblProd.getValueAt(index, 1));
-        txtPrecio.setText((String)modeloTblProd.getValueAt(index, 2));
-    }//GEN-LAST:event_btnSeleccionarActionPerformed
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        modeloTblDetalle.addRow(new Object[]{Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), Integer.parseInt(txtCantidad.getText())});
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
         try{
-            if(rbnAccesorio.isSelected()){
-                for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
-                    if(miEmpresa.getEquipos().get(i) instanceof Accesorio){
-                        String nombre = miEmpresa.getEquipos().get(i).getNombre();
-                        String modelo = miEmpresa.getEquipos().get(i).getModelo();
-                        double precio = miEmpresa.getEquipos().get(i).getPrecio();
-                        modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});                        
-                    }                    
-                }
-            }
-            if(rbnParte.isSelected()){
-                for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
-                    if(miEmpresa.getEquipos().get(i) instanceof Parte){
-                        String nombre = miEmpresa.getEquipos().get(i).getNombre();
-                        String modelo = miEmpresa.getEquipos().get(i).getModelo();
-                        double precio = miEmpresa.getEquipos().get(i).getPrecio();
-                        modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});                        
-                    }                    
-                }
-            }
+            
+            int index = tblProductos.getSelectedRow();
+            txtCodigo.setText(modeloTblProd.getValueAt(index, 0).toString());
+            txtNombre.setText(modeloTblProd.getValueAt(index, 1).toString());
+            txtPrecio.setText(modeloTblProd.getValueAt(index, 2).toString());
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
         }
+        
+    }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        try{
+            modeloTblDetalle.addRow(new Object[]{(txtCodigo.getText()), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), Double.parseDouble(txtCantidad.getText()), Double.parseDouble(txtCantidad.getText()) * Double.parseDouble(txtPrecio.getText()) });
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+        
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        
     }//GEN-LAST:event_formWindowActivated
 
     private void rbnAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnAccesorioActionPerformed
         // TODO add your handling code here:
         try{
+            modeloTblProd.setRowCount(0);
             for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
                 if(miEmpresa.getEquipos().get(i) instanceof Accesorio){
                     String nombre = miEmpresa.getEquipos().get(i).getNombre();
                     String modelo = miEmpresa.getEquipos().get(i).getModelo();
                     double precio = miEmpresa.getEquipos().get(i).getPrecio();
-                    modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});                        
+                    modeloTblProd.addRow(new Object[]{"", nombre, precio, modelo});                        
                 }                    
             }
         }
@@ -306,6 +348,116 @@ Empresa miEmpresa;
             JOptionPane.showMessageDialog(rootPane, e.toString());
         }
     }//GEN-LAST:event_rbnAccesorioActionPerformed
+
+    private void rbnParteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnParteActionPerformed
+        // TODO add your handling code here:
+        try{
+            modeloTblProd.setRowCount(0);
+            for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
+                if(miEmpresa.getEquipos().get(i) instanceof Parte){
+                    String nombre = miEmpresa.getEquipos().get(i).getNombre();
+                    String modelo = miEmpresa.getEquipos().get(i).getModelo();
+                    double precio = miEmpresa.getEquipos().get(i).getPrecio();
+                    modeloTblProd.addRow(new Object[]{"", nombre, precio, modelo});                        
+                }                    
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+    }//GEN-LAST:event_rbnParteActionPerformed
+    
+    private void eliminarFila(){
+        try{
+            ArrayList<DetalleVenta> temp = new ArrayList<>();
+            for(int i = 0; i<modeloTblDetalle.getRowCount(); i++){
+                String modelo = modeloTblDetalle.getValueAt(i, 0).toString();
+                String nombre = modeloTblDetalle.getValueAt(i, 1).toString();
+                double precio = Double.parseDouble(modeloTblDetalle.getValueAt(i, 2).toString());
+                Computador aux = new Computador(modelo, precio, nombre);
+                temp.add(new DetalleVenta(aux, Double.parseDouble(modeloTblDetalle.getValueAt(i, 3).toString())));
+            }
+            int num = tblDetalle.getSelectedRow();
+            temp.remove(num);
+            modeloTblDetalle.setRowCount(0);
+            for (int i= 0; i < temp.size(); i++){
+                modeloTblDetalle.addRow(new Object[]{"", temp.get(i).getDetalle().getNombre(), temp.get(i).getDetalle().getPrecio(), temp.get(i).getCantidad(), temp.get(i).getPrecioTotal()});
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+        
+    }
+    
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        try{
+            /*ArrayList<DetalleVenta> temp = new ArrayList<>();
+            for(int i = 0; i<modeloTblDetalle.getRowCount(); i++){
+                String modelo = modeloTblDetalle.getValueAt(i, 0).toString();
+                String nombre = modeloTblDetalle.getValueAt(i, 1).toString();
+                double precio = Double.parseDouble(modeloTblDetalle.getValueAt(i, 2).toString());
+                Computador aux = new Computador(modelo, precio, nombre);
+                temp.add(new DetalleVenta(aux, Double.parseDouble(modeloTblDetalle.getValueAt(i, 3).toString())));
+            }
+            int num = tblDetalle.getSelectedRow();
+            temp.remove(num);
+            modeloTblDetalle.setRowCount(0);
+            for (int i= 0; i < temp.size(); i++){
+                modeloTblDetalle.addRow(new Object[]{"", temp.get(i).getDetalle().getNombre(), temp.get(i).getDetalle().getPrecio(), temp.get(i).getCantidad(), temp.get(i).getPrecioTotal()});
+            }
+            */
+            eliminarFila();
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int num = tblDetalle.getSelectedRow();
+            txtCodigo.setText(modeloTblDetalle.getValueAt(num, 0).toString());
+            txtNombre.setText(modeloTblDetalle.getValueAt(num, 1).toString());
+            txtPrecio.setText(modeloTblDetalle.getValueAt(num, 2).toString());
+            
+            eliminarFila();
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
+        // TODO add your handling code here:
+        try{
+            String cedula = (String)cmbVendedor.getSelectedItem();
+            int cont=0;
+            for(int i=0; i < miEmpresa.getPersonas().size(); i++){
+                if(cedula.equals(miEmpresa.getPersonas().get(i).getCedula()))
+                    cont = i;
+                else
+                    cont = cont;
+            }
+            ArrayList<DetalleVenta> temp = new ArrayList<>();
+            for(int i = 0; i<modeloTblDetalle.getRowCount(); i++){
+                String modelo = modeloTblDetalle.getValueAt(i, 0).toString();
+                String nombre = modeloTblDetalle.getValueAt(i, 1).toString();
+                double precio = Double.parseDouble(modeloTblDetalle.getValueAt(i, 2).toString());
+                Computador aux = new Computador(modelo, precio, nombre);
+                temp.add(new DetalleVenta(aux, Double.parseDouble(modeloTblDetalle.getValueAt(i, 3).toString())));
+            }
+            miEmpresa.getVentas().add(new Venta((miEmpresa.getVentas().size()+1), (Vendedor)miEmpresa.getPersonas().get(cont), temp));
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+    }//GEN-LAST:event_btnVenderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,8 +497,11 @@ Empresa miEmpresa;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSeleccionar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnVender;
+    private javax.swing.JComboBox<String> cmbVendedor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCantidad;

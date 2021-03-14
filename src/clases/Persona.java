@@ -19,6 +19,20 @@ public class  Persona {
         this.apellido = apellido;
         this.cedula = cedula;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+    
+    
    
 
    
