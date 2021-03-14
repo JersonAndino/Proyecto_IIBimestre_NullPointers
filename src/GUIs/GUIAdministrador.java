@@ -313,8 +313,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
               ListaEmpleados ListEmpleado = new ListaEmpleados();
         
     if(cbmTipo.getSelectedItem().equals("Vendedor")){
-        
-        String a = txtNombre.getText();
         //ListEmpleado.AgregarEmpleado(e1);
         
         //misDatos.setPersonas(empleados.getListEmpleado());
@@ -343,8 +341,9 @@ public class GUIAdministrador extends javax.swing.JFrame {
          
          JOptionPane.showMessageDialog(this,"Nombre no ingresado ");
          System.exit(0);
+         empleados.AgregarEmpleado(t1);
      }
-          empleados.AgregarEmpleado(t1);
+          
      } 
      
         
