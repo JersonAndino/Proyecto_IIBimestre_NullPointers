@@ -27,6 +27,7 @@ public class GUIHome extends javax.swing.JFrame {
     ArrayList<Empleado> personas;
     ArrayList<Computador> equipos;
 
+    
     /**
      * Creates new form NewJFrame
      */
@@ -62,13 +63,9 @@ public class GUIHome extends javax.swing.JFrame {
         rbtMantenimiento = new javax.swing.JRadioButton();
         rbtVenta = new javax.swing.JRadioButton();
         btnGuardar = new javax.swing.JButton();
-        lblUsuario = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
         lblContrasena = new javax.swing.JLabel();
         lblCedula = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        txtCodigo = new javax.swing.JTextField();
-        lblCodigo = new javax.swing.JLabel();
         psfContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,13 +111,9 @@ public class GUIHome extends javax.swing.JFrame {
             }
         });
 
-        lblUsuario.setText("Usuario:");
-
         lblContrasena.setText("Contraseña:");
 
         lblCedula.setText("Cedula:");
-
-        lblCodigo.setText("Codigo:");
 
         psfContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,46 +127,32 @@ public class GUIHome extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
+                .addGap(28, 28, 28)
+                .addComponent(lblCedula)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblContrasena)
+                .addGap(18, 18, 18)
+                .addComponent(psfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(201, 201, 201)
                 .addComponent(btnGuardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario)
-                    .addComponent(lblCedula))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(txtCedula))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCodigo)
-                    .addComponent(lblContrasena))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCodigo)
-                    .addComponent(psfContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
-                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCedula)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCodigo))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblContrasena)
-                    .addComponent(psfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(psfContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCedula)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(pnlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnGuardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -189,9 +168,9 @@ public class GUIHome extends javax.swing.JFrame {
         int codigo;
         String usuario;
         String contrasena = new String(psfContraseña.getPassword());
-        usuario = txtUsuario.getText();
+        //usuario = txtUsuario.getText();
         cedula = Integer.parseInt(txtCedula.getText());
-        codigo = Integer.parseInt(txtCodigo.getText());
+        // codigo = Integer.parseInt(txtCodigo.getText());
 
         if (rbtAdministrador.isSelected()) {
         
@@ -260,16 +239,12 @@ public class GUIHome extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btgTipo;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel lblCedula;
-    private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblContrasena;
-    private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel pnlTipo;
     private javax.swing.JPasswordField psfContraseña;
     private javax.swing.JRadioButton rbtAdministrador;
     private javax.swing.JRadioButton rbtMantenimiento;
     private javax.swing.JRadioButton rbtVenta;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
