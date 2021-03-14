@@ -350,7 +350,7 @@ class FondoFrame extends JPanel{
     
     @Override
     public void paint(Graphics g){
-        imagen = new ImageIcon(getClass().getResource("/Imagenes/3888.jpg")).getImage();
+        imagen = new ImageIcon(getClass().getResource("/Imagenes/1.jpg")).getImage();
         
         g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
         
