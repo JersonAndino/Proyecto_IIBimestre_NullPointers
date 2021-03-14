@@ -28,11 +28,11 @@ public class GUIAdministrador extends javax.swing.JFrame {
      */
     public GUIAdministrador() {
         initComponents();
-        GUIHome ventana = new GUIHome();
-        this.misDatos = ventana.misDatos;
-        empleados = new ListaEmpleados();
-        empleados.setListEmpleado(misDatos.getPersonas());
-        JOptionPane.showMessageDialog(this, misDatos.getPersonas().get(0).getNombre());
+        //GUIHome ventana = new GUIHome();
+        //this.misDatos = ventana.misDatos;
+        //empleados = new ListaEmpleados();
+        //empleados.setListEmpleado(misDatos.getPersonas());
+        //JOptionPane.showMessageDialog(this, misDatos.getPersonas().get(0).getNombre());
     }
 
     /**
@@ -354,7 +354,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     
-    Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562"); 
+    //Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562"); 
               ListaEmpleados ListEmpleado = new ListaEmpleados();
         
     if(cbmTipo.getSelectedItem().equals("Vendedor")){
@@ -362,6 +362,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
         Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
         //ListEmpleado.AgregarEmpleado(e1);
         empleados.AgregarEmpleado(e1);
+        //misDatos.setPersonas(empleados.getListEmpleado());
     
     }
      if(cbmTipo.getSelectedItem().equals("Técnico")){
@@ -369,29 +370,40 @@ public class GUIAdministrador extends javax.swing.JFrame {
          Tecnico t1= new Tecnico(0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
          //ListEmpleado.AgregarEmpleado(t1);
          empleados.AgregarEmpleado(t1);
+         //misDatos.setPersonas(empleados.getListEmpleado());
      }   
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
-   Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562");  
-        if(txtCodigo.getText().equals(a1.getCodigo())){
-            btnGuardar.setEnabled(true);
-            txtNombre.setEnabled(true);
-            txtApellido.setEnabled(true);
-            txtCedula.setEnabled(true);
-            txtCedDespido.setEnabled(true);
-            btnDesvincular.setEnabled(true);
-            txtComponente.setEnabled(true);
-            txtCantidad.setEnabled(true);
-            txtComponente.setEnabled(true);
-            btnPedido.setEnabled(true);
-           
-        }else{
-       JOptionPane.showMessageDialog(null,"Codigo Incorrecto");
-            txtCodigo.setText("");
+        try{
+            if(this.misDatos == null){
+                GUIHome homeG = new GUIHome();
+                this.misDatos = homeG.misDatos;
+            }
+            Administrador a1= misDatos.getAdmin();  
+            if(txtCodigo.getText().equals(a1.getCodigo())){
+                btnGuardar.setEnabled(true);
+                txtNombre.setEnabled(true);
+                txtApellido.setEnabled(true);
+                txtCedula.setEnabled(true);
+                txtCedDespido.setEnabled(true);
+                btnDesvincular.setEnabled(true);
+                txtComponente.setEnabled(true);
+                txtCantidad.setEnabled(true);
+                txtComponente.setEnabled(true);
+                btnPedido.setEnabled(true);
+
+            }else{
+           JOptionPane.showMessageDialog(null,"Codigo Incorrecto");
+                txtCodigo.setText("");
+            }
         }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+        
 
         
     }//GEN-LAST:event_btnValidarActionPerformed

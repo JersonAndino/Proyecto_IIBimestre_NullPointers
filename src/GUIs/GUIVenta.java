@@ -37,21 +37,22 @@ DefaultComboBoxModel modeloCombo;
         this.misDatos = ventana.misDatos;
         modeloTblProd = new DefaultTableModel();
         modeloTblDetalle = new DefaultTableModel();
-        modeloTblProd.addColumn("Codigo");
+        //modeloTblProd.addColumn("Codigo");
         modeloTblProd.addColumn("Nombre");
         modeloTblProd.addColumn("Precio");
-        modeloTblProd.addColumn("Stock");
+        modeloTblProd.addColumn("Modelo");
         tblProductos.setModel(modeloTblProd);
-        modeloTblDetalle.addColumn("Codigo");
+        //modeloTblDetalle.addColumn("Codigo");
         modeloTblDetalle.addColumn("Nombre");
         modeloTblDetalle.addColumn("Precio");
+        modeloTblDetalle.addColumn("Modelo");
         modeloTblDetalle.addColumn("Cantidad");
         modeloTblDetalle.addColumn("Precio total");
         tblDetalle.setModel(modeloTblDetalle);
         modeloCombo =  new DefaultComboBoxModel();
         for(int i= 0; i < misDatos.getPersonas().size(); i++){
-            if(misDatos.getPersonas().get(i) instanceof Vendedor)
-                modeloCombo.addElement(misDatos.getPersonas().get(i).getCedula());
+          if(misDatos.getPersonas().get(i) instanceof Vendedor)
+            modeloCombo.addElement(misDatos.getPersonas().get(i).getCedula());
         }
         cmbVendedor.setModel(modeloCombo);
     }
@@ -79,14 +80,14 @@ DefaultComboBoxModel modeloCombo;
         tblProductos = new javax.swing.JTable();
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        lblCodigo = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         lblPrecio = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
         lblCantidad = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnSeleccionar = new javax.swing.JButton();
+        txtModelo = new javax.swing.JTextField();
+        lblModelo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDetalle = new javax.swing.JTable();
@@ -106,6 +107,11 @@ DefaultComboBoxModel modeloCombo;
         lblVendedor.setText("Vendedor:");
 
         cmbVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbVendedorActionPerformed(evt);
+            }
+        });
 
         btnVender.setText("Vender");
         btnVender.setToolTipText("");
@@ -155,13 +161,14 @@ DefaultComboBoxModel modeloCombo;
 
         txtNombre.setEnabled(false);
 
-        lblCodigo.setText("Codigo:");
-
-        txtCodigo.setEnabled(false);
-
         lblPrecio.setText("Precio:");
 
         txtPrecio.setEnabled(false);
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrecioActionPerformed(evt);
+            }
+        });
 
         lblCantidad.setText("Cantidad:");
 
@@ -179,6 +186,8 @@ DefaultComboBoxModel modeloCombo;
             }
         });
 
+        lblModelo.setText("Modelo:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -188,25 +197,30 @@ DefaultComboBoxModel modeloCombo;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSeleccionar, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(112, 112, 112)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCodigo)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblNombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(59, 59, 59)
+                                .addComponent(lblNombre))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnSeleccionar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblCantidad)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(61, 61, 61)
-                        .addComponent(btnAgregar))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblModelo)
+                                .addGap(28, 28, 28)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtModelo)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
+                        .addGap(52, 52, 52)
+                        .addComponent(btnAgregar)
+                        .addGap(63, 63, 63))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -231,24 +245,20 @@ DefaultComboBoxModel modeloCombo;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSeleccionar)
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNombre)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCodigo)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPrecio)
-                            .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCantidad)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnAgregar)))
+                .addComponent(btnSeleccionar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregar)
+                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblModelo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPrecio)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCantidad)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -332,7 +342,7 @@ DefaultComboBoxModel modeloCombo;
                                 .addComponent(btnHome))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblVendedor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cmbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(460, 460, 460)
@@ -365,9 +375,9 @@ DefaultComboBoxModel modeloCombo;
         try{
             
             int index = tblProductos.getSelectedRow();
-            txtCodigo.setText(modeloTblProd.getValueAt(index, 0).toString());
-            txtNombre.setText(modeloTblProd.getValueAt(index, 1).toString());
-            txtPrecio.setText(modeloTblProd.getValueAt(index, 2).toString());
+            txtModelo.setText(modeloTblProd.getValueAt(index, 2).toString());
+            txtNombre.setText(modeloTblProd.getValueAt(index, 0).toString());
+            txtPrecio.setText(modeloTblProd.getValueAt(index, 1).toString());
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
@@ -378,7 +388,7 @@ DefaultComboBoxModel modeloCombo;
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         try{
-            modeloTblDetalle.addRow(new Object[]{(txtCodigo.getText()), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), Double.parseDouble(txtCantidad.getText()), Double.parseDouble(txtCantidad.getText()) * Double.parseDouble(txtPrecio.getText()) });
+            modeloTblDetalle.addRow(new Object[]{txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), txtModelo.getText(), Double.parseDouble(txtCantidad.getText()), Double.parseDouble(txtCantidad.getText()) * Double.parseDouble(txtPrecio.getText()) });
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
@@ -400,7 +410,7 @@ DefaultComboBoxModel modeloCombo;
                     String nombre = misDatos.getEquipos().get(i).getNombre();
                     String modelo = misDatos.getEquipos().get(i).getModelo();
                     double precio = misDatos.getEquipos().get(i).getPrecio();
-                    modeloTblProd.addRow(new Object[]{"", nombre, precio, modelo});                        
+                    modeloTblProd.addRow(new Object[]{nombre, precio, modelo});                        
                 }                    
             }
         }
@@ -418,7 +428,7 @@ DefaultComboBoxModel modeloCombo;
                     String nombre = misDatos.getEquipos().get(i).getNombre();
                     String modelo = misDatos.getEquipos().get(i).getModelo();
                     double precio = misDatos.getEquipos().get(i).getPrecio();
-                    modeloTblProd.addRow(new Object[]{"", nombre, precio, modelo});                        
+                    modeloTblProd.addRow(new Object[]{nombre, precio, modelo});                        
                 }                    
             }
         }
@@ -431,9 +441,9 @@ DefaultComboBoxModel modeloCombo;
         try{
             ArrayList<DetalleVenta> temp = new ArrayList<>();
             for(int i = 0; i<modeloTblDetalle.getRowCount(); i++){
-                String modelo = modeloTblDetalle.getValueAt(i, 0).toString();
-                String nombre = modeloTblDetalle.getValueAt(i, 1).toString();
-                double precio = Double.parseDouble(modeloTblDetalle.getValueAt(i, 2).toString());
+                String modelo = modeloTblDetalle.getValueAt(i, 2).toString();
+                String nombre = modeloTblDetalle.getValueAt(i, 0).toString();
+                double precio = Double.parseDouble(modeloTblDetalle.getValueAt(i, 1).toString());
                 Computador aux = new Computador(modelo, precio, nombre);
                 temp.add(new DetalleVenta(aux, Double.parseDouble(modeloTblDetalle.getValueAt(i, 3).toString())));
             }
@@ -441,7 +451,7 @@ DefaultComboBoxModel modeloCombo;
             temp.remove(num);
             modeloTblDetalle.setRowCount(0);
             for (int i= 0; i < temp.size(); i++){
-                modeloTblDetalle.addRow(new Object[]{"", temp.get(i).getDetalle().getNombre(), temp.get(i).getDetalle().getPrecio(), temp.get(i).getCantidad(), temp.get(i).getPrecioTotal()});
+                modeloTblDetalle.addRow(new Object[]{temp.get(i).getDetalle().getNombre(), temp.get(i).getDetalle().getPrecio(), temp.get(i).getDetalle().getModelo(), temp.get(i).getCantidad(), temp.get(i).getPrecioTotal()});
             }
         }
         catch(Exception e){
@@ -480,9 +490,9 @@ DefaultComboBoxModel modeloCombo;
         // TODO add your handling code here:
         try{
             int num = tblDetalle.getSelectedRow();
-            txtCodigo.setText(modeloTblDetalle.getValueAt(num, 0).toString());
-            txtNombre.setText(modeloTblDetalle.getValueAt(num, 1).toString());
-            txtPrecio.setText(modeloTblDetalle.getValueAt(num, 2).toString());
+            //txtCodigo.setText(modeloTblDetalle.getValueAt(num, 0).toString());
+            txtNombre.setText(modeloTblDetalle.getValueAt(num, 0).toString());
+            txtPrecio.setText(modeloTblDetalle.getValueAt(num, 1).toString());
             
             eliminarFila();
             
@@ -512,7 +522,8 @@ DefaultComboBoxModel modeloCombo;
                 temp.add(new DetalleVenta(aux, Double.parseDouble(modeloTblDetalle.getValueAt(i, 3).toString())));
             }
             misDatos.getVentas().add(new Venta((misDatos.getVentas().size()+1), (Vendedor)misDatos.getPersonas().get(cont), temp));
-            JOptionPane.showMessageDialog(rootPane, misDatos.getVentas().size());
+            //JOptionPane.showMessageDialog(rootPane, misDatos.getVentas().size());
+            modeloTblDetalle.setRowCount(0);
             
         }
         catch(Exception e){
@@ -526,6 +537,14 @@ DefaultComboBoxModel modeloCombo;
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void cmbVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVendedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbVendedorActionPerformed
+
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,7 +597,7 @@ DefaultComboBoxModel modeloCombo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCantidad;
-    private javax.swing.JLabel lblCodigo;
+    private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTipoProducto;
@@ -589,7 +608,7 @@ DefaultComboBoxModel modeloCombo;
     private javax.swing.JTable tblDetalle;
     private javax.swing.JTable tblProductos;
     private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
