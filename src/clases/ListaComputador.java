@@ -16,4 +16,9 @@ public class ListaComputador {
 	public ListaComputador() {
 		ListComputador=new ArrayList<Computador>();
 	}
+        public void AgregarComputador(Computador c1) {
+		ListComputador.add(c1);
+	}
+	
+	
 }

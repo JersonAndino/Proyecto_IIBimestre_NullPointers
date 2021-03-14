@@ -20,15 +20,18 @@ public class ListaEmpleados {
         public void AgregarEmpleado(Empleado e1) {
 		ListEmpleado.add(e1);
 	}
-	public void EliminarPersona(String vcedula) {
+	public void EliminarEmpleado(String vcedula) {
 		for (Empleado e1:ListEmpleado) {
 			if(e1 instanceof Vendedor ){
                             
                             if((e1.getCedula()).equals(vcedula))
 				ListEmpleado.remove(e1);
                         
+                        }else if (e1 instanceof Tecnico ){
+                            ListEmpleado.remove(e1);
                         }
 		}
 	}
+        
     
 }

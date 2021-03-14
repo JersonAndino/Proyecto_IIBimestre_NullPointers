@@ -7,6 +7,7 @@ package GUIs;
 
 import clases.Administrador;
 import clases.Empleado;
+import clases.ListaEmpleados;
 import clases.Tecnico;
 import clases.Vendedor;
 import javax.swing.JOptionPane;
@@ -291,15 +292,20 @@ public class GUIAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562");     
-    if(cbmTipo.getSelectedItem().equals("Vendedor")){
-        Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+    
+        Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562"); 
+        ListaEmpleados ListEmpleado = new ListaEmpleados();
         
+    if(cbmTipo.getSelectedItem().equals("Vendedor")){
+        
+        Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+        ListEmpleado.AgregarEmpleado(e1);
     
     }
      if(cbmTipo.getSelectedItem().equals("Técnico")){
          
          Tecnico t1= new Tecnico(0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+         ListEmpleado.AgregarEmpleado(t1);
      }   
         
         
@@ -329,8 +335,8 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
     private void btnDesvincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesvincularActionPerformed
        
-        
-        
+        ListaEmpleados ListEmpleado = new ListaEmpleados();
+        ListEmpleado.EliminarEmpleado(txtCedDespido.getText());
         
         
         
