@@ -362,6 +362,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
             txtComponente.setEnabled(true);
             txtCantidad.setEnabled(true);
             txtComponente.setEnabled(true);
+            btnPedido.setEnabled(true);
            
         }else{
        JOptionPane.showMessageDialog(null,"Codigo Incorrecto");
