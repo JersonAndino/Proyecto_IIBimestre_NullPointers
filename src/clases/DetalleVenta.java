@@ -23,14 +23,6 @@ public class DetalleVenta {
     public double getPrecioTotal() {
         return precioTotal;
     }
-
-    public Computador getDetalle() {
-        return detalle;
-    }
-
-    public double getCantidad() {
-        return cantidad;
-    }
     
     
     
