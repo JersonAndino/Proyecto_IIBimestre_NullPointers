@@ -11,7 +11,10 @@ import java.util.ArrayList;
  *
  * @author R O G
  */
-public class ListaAcessorio {
-    ArrayList<Accesorio> ListAcc = new ArrayList<Accesorio>(); 
-        
+public class ListaEmpleados {
+    ArrayList<Empleado>ListEmpleado=new ArrayList<>();
+	public ListaEmpleados() {
+		ListEmpleado =new ArrayList<Empleado>();
+	}
+    
 }

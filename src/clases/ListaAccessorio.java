@@ -11,9 +11,10 @@ import java.util.ArrayList;
  *
  * @author R O G
  */
-public class ListaComputador {
-    ArrayList<Computador> ListComputador = new ArrayList<>();
-	public ListaComputador() {
-		ListComputador=new ArrayList<Computador>();
+public class ListaAccessorio {
+    ArrayList<Accesorio> ListAccesorio = new ArrayList<>(); 
+	public ListaAccessorio() {
+		ListAccesorio=new ArrayList<Accesorio>();
 	}
+        
 }

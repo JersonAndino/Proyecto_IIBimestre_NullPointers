@@ -15,7 +15,7 @@ public class Vendedor extends Empleado{
     private String codigo;
    
     
-    public Vendedor(double comision, String codigo, double ventas, String nombre, String apellido, String cedula) {
+    public Vendedor(double comision, double ventas, String nombre, String apellido, String cedula) {
         super( ventas, nombre, apellido, cedula);
         this.codigo="VNT"+contador;
         this.comision = comision;

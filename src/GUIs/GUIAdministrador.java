@@ -46,8 +46,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
         txtApellido = new javax.swing.JTextField();
         txtCedula = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        txtCodEmpleado = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtCedDespido = new javax.swing.JTextField();
@@ -95,10 +93,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("Código:");
-
-        txtCodEmpleado.setEnabled(false);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,15 +116,9 @@ public class GUIAdministrador extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtNombre)))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCodEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,9 +142,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtCodEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(btnGuardar)
                 .addGap(21, 21, 21))
@@ -166,7 +152,15 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel7.setText("Cédula:");
 
+        txtCedDespido.setEnabled(false);
+
         btnDesvincular.setText("Desvincular");
+        btnDesvincular.setEnabled(false);
+        btnDesvincular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesvincularActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -299,11 +293,13 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
     Administrador a1= new Administrador("0001","Andres","Casagualpa","1726331562");     
     if(cbmTipo.getSelectedItem().equals("Vendedor")){
-        Vendedor e1 =new Vendedor (0.1,"VTN1",0,"null","null","null");
+        Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+        
     
     }
      if(cbmTipo.getSelectedItem().equals("Técnico")){
-         //Tecnico t1= new Tecnico();
+         
+         Tecnico t1= new Tecnico(0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
      }   
         
         
@@ -316,7 +312,9 @@ public class GUIAdministrador extends javax.swing.JFrame {
             txtNombre.setEnabled(true);
             txtApellido.setEnabled(true);
             txtCedula.setEnabled(true);
-            txtCodEmpleado.setEnabled(true);
+            txtCedDespido.setEnabled(true);
+            btnDesvincular.setEnabled(true);
+           
         }else{
        JOptionPane.showMessageDialog(null,"Codigo Incorrecto");
             txtCodigo.setText("");
@@ -328,6 +326,20 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private void cbmTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbmTipoActionPerformed
+
+    private void btnDesvincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesvincularActionPerformed
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnDesvincularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,7 +390,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -386,7 +397,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCedDespido;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCodEmpleado;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

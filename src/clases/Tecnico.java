@@ -14,7 +14,7 @@ public class Tecnico extends Empleado{
     static int contador=1;
     private String codigo;
 
-    public Tecnico(double comision, String codigo, double ventas, String nombre, String apellido, String cedula) {
+    public Tecnico(double comision, double ventas, String nombre, String apellido, String cedula) {
         super( ventas, nombre, apellido, cedula);
         this.comision = comision;
         this.codigo="TEC"+contador;
