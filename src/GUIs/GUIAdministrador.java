@@ -215,7 +215,12 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel10.setText("Cantidad:");
 
+        txtComponente.setEnabled(false);
+
+        txtCantidad.setEnabled(false);
+
         btnPedido.setText("Realizar Pedido");
+        btnPedido.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -354,6 +359,9 @@ public class GUIAdministrador extends javax.swing.JFrame {
             txtCedula.setEnabled(true);
             txtCedDespido.setEnabled(true);
             btnDesvincular.setEnabled(true);
+            txtComponente.setEnabled(true);
+            txtCantidad.setEnabled(true);
+            txtComponente.setEnabled(true);
            
         }else{
        JOptionPane.showMessageDialog(null,"Codigo Incorrecto");
