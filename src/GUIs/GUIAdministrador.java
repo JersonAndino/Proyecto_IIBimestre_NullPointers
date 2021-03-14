@@ -45,8 +45,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cbmTipo = new javax.swing.JComboBox<>();
@@ -70,19 +68,10 @@ public class GUIAdministrador extends javax.swing.JFrame {
         txtComponente = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         btnPedido = new javax.swing.JButton();
-        btnValidar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Administrador");
-
-        jLabel2.setText("Código:");
-
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("NUEVO EMPLEADO"));
 
@@ -101,14 +90,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel6.setText("Cédula:");
 
-        txtNombre.setEnabled(false);
-
-        txtApellido.setEnabled(false);
-
-        txtCedula.setEnabled(false);
-
         btnGuardar.setText("Guardar");
-        btnGuardar.setEnabled(false);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -174,10 +156,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel7.setText("Cédula:");
 
-        txtCedDespido.setEnabled(false);
-
         btnDesvincular.setText("Desvincular");
-        btnDesvincular.setEnabled(false);
         btnDesvincular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDesvincularActionPerformed(evt);
@@ -231,12 +210,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel10.setText("Cantidad:");
 
-        txtComponente.setEnabled(false);
-
-        txtCantidad.setEnabled(false);
-
         btnPedido.setText("Realizar Pedido");
-        btnPedido.setEnabled(false);
         btnPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPedidoActionPerformed(evt);
@@ -288,29 +262,12 @@ public class GUIAdministrador extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        btnValidar.setText("Validar");
-        btnValidar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValidarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(btnValidar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -322,25 +279,23 @@ public class GUIAdministrador extends javax.swing.JFrame {
                                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnValidar))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
+                        .addGap(251, 251, 251)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -359,71 +314,58 @@ public class GUIAdministrador extends javax.swing.JFrame {
         
     if(cbmTipo.getSelectedItem().equals("Vendedor")){
         
-        Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+        String a = txtNombre.getText();
         //ListEmpleado.AgregarEmpleado(e1);
-        empleados.AgregarEmpleado(e1);
+        
         //misDatos.setPersonas(empleados.getListEmpleado());
-    
+    if (txtNombre.getText().equals("")){
+         
+         JOptionPane.showMessageDialog(this,"Nombre no ingresado ");
+         System.exit(0);
+       
+     }else if(txtApellido.getText().equals("")){
+     JOptionPane.showMessageDialog(this,"Apellido no ingresado ");
+     System.exit(0);
+     }else if(txtCedula.getText().equals("")){
+     JOptionPane.showMessageDialog(this,"Cedula no ingresada ");
+     System.exit(0);
+     }
+    Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+    empleados.AgregarEmpleado(e1);
     }
      if(cbmTipo.getSelectedItem().equals("Técnico")){
          
          Tecnico t1= new Tecnico(0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
          //ListEmpleado.AgregarEmpleado(t1);
-         empleados.AgregarEmpleado(t1);
+        
          //misDatos.setPersonas(empleados.getListEmpleado());
-     }   
+            if (txtNombre.getText()==null){
+         
+         JOptionPane.showMessageDialog(this,"Nombre no ingresado ");
+         System.exit(0);
+     }
+          empleados.AgregarEmpleado(t1);
+     } 
+     
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
-        try{
-            if(this.misDatos == null){
-                GUIHome homeG = new GUIHome();
-                this.misDatos = homeG.misDatos;
-            }
-            Administrador a1= misDatos.getAdmin();  
-            if(txtCodigo.getText().equals(a1.getCodigo())){
-                btnGuardar.setEnabled(true);
-                txtNombre.setEnabled(true);
-                txtApellido.setEnabled(true);
-                txtCedula.setEnabled(true);
-                txtCedDespido.setEnabled(true);
-                btnDesvincular.setEnabled(true);
-                txtComponente.setEnabled(true);
-                txtCantidad.setEnabled(true);
-                txtComponente.setEnabled(true);
-                btnPedido.setEnabled(true);
-
-            }else{
-           JOptionPane.showMessageDialog(null,"Codigo Incorrecto");
-                txtCodigo.setText("");
-            }
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e.toString());
-        }
-        
-
-        
-    }//GEN-LAST:event_btnValidarActionPerformed
 
     private void cbmTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbmTipoActionPerformed
 
     private void btnDesvincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesvincularActionPerformed
-       
+        if(txtCedDespido.getText().equals("")){
+         JOptionPane.showMessageDialog(this,"Cedula no ingresada ");
+        System.exit(0);
+        }
         //ListaEmpleados ListEmpleado = new ListaEmpleados();
         empleados.EliminarEmpleado(txtCedDespido.getText()); 
                 
         
         
     }//GEN-LAST:event_btnDesvincularActionPerformed
-
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoActionPerformed
         String componente;
@@ -482,12 +424,10 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnDesvincular;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnPedido;
-    private javax.swing.JButton btnValidar;
     private javax.swing.JComboBox<String> cbmDistribuidor;
     private javax.swing.JComboBox<String> cbmTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -503,7 +443,6 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCedDespido;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtComponente;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
