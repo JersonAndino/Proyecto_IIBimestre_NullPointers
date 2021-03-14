@@ -22,6 +22,11 @@ public class Vendedor extends Empleado{
         contador++;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+    
+
     @Override
     public double Sueldo(){
         return 450+(comision * ventas);

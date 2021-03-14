@@ -61,6 +61,7 @@ public class GUIHome extends javax.swing.JFrame {
     private void initComponents() {
 
         btgTipo = new javax.swing.ButtonGroup();
+        jPasswordField1 = new javax.swing.JPasswordField();
         pnlTipo = new javax.swing.JPanel();
         rbtAdministrador = new javax.swing.JRadioButton();
         rbtMantenimiento = new javax.swing.JRadioButton();
@@ -70,6 +71,8 @@ public class GUIHome extends javax.swing.JFrame {
         lblCedula = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
         psfContraseña = new javax.swing.JPasswordField();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,9 +133,9 @@ public class GUIHome extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCedula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblContrasena)
@@ -165,34 +168,64 @@ public class GUIHome extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        int cedula;
-        // String nombre;
-        //  String apellido;
-        int codigo;
-        String usuario;
-        String contrasena = new String(psfContraseña.getPassword());
-        //usuario = txtUsuario.getText();
-        cedula = Integer.parseInt(txtCedula.getText());
-        // codigo = Integer.parseInt(txtCodigo.getText());
+        try{
+            int codigo;
+            String cedula = txtCedula.getText();
+            String contraseña = new String(psfContraseña.getPassword());
+            
 
-        if (rbtAdministrador.isSelected()) {
-        
+            if (rbtAdministrador.isSelected()) {
+                if(misDatos.getAdmin().getCedula().equals(cedula) && misDatos.getAdmin().getCodigo().equals(contraseña)){
+                    GUIAdministrador administrador = new GUIAdministrador();
+                    this.setVisible(false);
+                    administrador.setVisible(true);
+                } 
+                else
+                    JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña invalidos");
+                    
+            }
+            if (rbtMantenimiento.isSelected()) {
+                boolean valido = false;
+                int cont = 0;
+                for(int i = 0; i < misDatos.getPersonas().size(); i++){
+                    if(misDatos.getPersonas().get(i).getCedula().equals(cedula)){
+                        valido = true;
+                        cont = i;
+                    }                      
+                }
+                if(valido == true && ((Tecnico)misDatos.getPersonas().get(cont)).getCodigo().equals(contraseña)){
+                    
+                    GUIMantenimiento mantenimiento = new GUIMantenimiento();
+                    this.setVisible(false);
+                    mantenimiento.setVisible(true);
+                } 
+                else
+                    JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña invalidos");
                 
-         
-            GUIAdministrador administrador = new GUIAdministrador();
-            this.setVisible(false);
-            administrador.setVisible(true);
+            }
+            if (rbtVenta.isSelected()) {
+                boolean valido = false;
+                int cont = 0;
+                for(int i = 0; i < misDatos.getPersonas().size(); i++){
+                    if(misDatos.getPersonas().get(i).getCedula().equals(cedula)){
+                        valido = true;
+                        cont = i;
+                    }                      
+                }
+                if(valido == true && ((Vendedor)misDatos.getPersonas().get(cont)).getCodigo().equals(contraseña)){
+                    GUIVenta ventas = new GUIVenta();
+                    this.setVisible(false);
+                    ventas.setVisible(true);
+                } 
+                else
+                    JOptionPane.showMessageDialog(rootPane, "Usuario o contraseña invalidos");
+            }
+            
         }
-        if (rbtMantenimiento.isSelected()) {
-            GUIMantenimiento mantenimiento = new GUIMantenimiento();
-            this.setVisible(false);
-            mantenimiento.setVisible(true);
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
         }
-        if (rbtVenta.isSelected()) {
-            GUIVenta ventana = new GUIVenta();
-            this.setVisible(false);
-            ventana.setVisible(true);
-        }
+        
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -241,6 +274,7 @@ public class GUIHome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btgTipo;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JPanel pnlTipo;

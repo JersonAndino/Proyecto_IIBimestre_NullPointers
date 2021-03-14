@@ -21,6 +21,10 @@ public class Tecnico extends Empleado{
         contador++;
     }
 
+    public String getCodigo() {
+        return codigo;
+    }
+    
   
    
     
