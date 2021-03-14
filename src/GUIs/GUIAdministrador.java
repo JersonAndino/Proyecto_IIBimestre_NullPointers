@@ -29,8 +29,10 @@ public class GUIAdministrador extends javax.swing.JFrame {
     public GUIAdministrador() {
         initComponents();
         GUIHome ventana = new GUIHome();
-        misDatos = ventana.misDatos;
+        this.misDatos = ventana.misDatos;
+        empleados = new ListaEmpleados();
         empleados.setListEmpleado(misDatos.getPersonas());
+        JOptionPane.showMessageDialog(this, misDatos.getPersonas().get(0).getNombre());
     }
 
     /**
@@ -401,8 +403,8 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private void btnDesvincularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesvincularActionPerformed
        
         //ListaEmpleados ListEmpleado = new ListaEmpleados();
-        empleados.EliminarEmpleado(txtCedDespido.getText());       
-        
+        empleados.EliminarEmpleado(txtCedDespido.getText()); 
+                
         
         
     }//GEN-LAST:event_btnDesvincularActionPerformed
