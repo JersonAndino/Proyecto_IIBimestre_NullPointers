@@ -16,7 +16,7 @@ public class ListaOrden {
 	public ListaOrden() {
 		ListOrden=new ArrayList<Orden>();
 	}
-	public void AgregarPersona(Orden o1) {
+	public void AgregarOrden(Orden o1) {
 		ListOrden.add(o1);
 	}
     

@@ -12,11 +12,23 @@ package clases;
 public class Orden {
     private String Componente;
     private int cantidad;
+    private String distribuidor;
 
-    public Orden(String Componente, int cantidad) {
+    public Orden(String Componente, int cantidad, String distribuidor) {
         this.Componente = Componente;
         this.cantidad = cantidad;
+        this.distribuidor = distribuidor;
     }
+
+    public String getDistribuidor() {
+        return distribuidor;
+    }
+
+    public void setDistribuidor(String distribuidor) {
+        this.distribuidor = distribuidor;
+    }
+
+  
 
     public String getComponente() {
         return Componente;
