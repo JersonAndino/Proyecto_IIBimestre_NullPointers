@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowActivated" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowActivated"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -33,9 +36,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnSeleccionar" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jComboBox1" min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" pref="574" max="32767" attributes="0"/>
                       <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jComboBox1" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="rbnAccesorio" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="rbnParte" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="rbnComputador" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -77,8 +89,13 @@
                   <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="lblTipoProducto" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblTipoProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbnAccesorio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbnParte" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbnComputador" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="112" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnSeleccionar" min="-2" max="-2" attributes="0"/>
@@ -233,6 +250,24 @@
     <Component class="javax.swing.JTextField" name="txtCantidad">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbnAccesorio">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Accesorios"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbnAccesorioActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbnParte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Partes"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbnComputador">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Computador"/>
       </Properties>
     </Component>
   </SubComponents>

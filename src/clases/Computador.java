@@ -19,5 +19,19 @@ public class Computador {
         this.precio = precio;
         this.nombre = nombre;
     }
+
+    public String getModelo() {
+        return Modelo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+    
+    
     
 }

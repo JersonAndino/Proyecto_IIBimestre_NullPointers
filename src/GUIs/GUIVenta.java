@@ -5,6 +5,16 @@
  */
 package GUIs;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import clases.Empresa;
+import clases.Administrador;
+import clases.Persona;
+import clases.Computador;
+import clases.Vendedor;
+import clases.Tecnico;
+import clases.Accesorio;
+import clases.Parte;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUIVenta extends javax.swing.JFrame {
 DefaultTableModel modeloTblProd, modeloTblDetalle;
+Empresa miEmpresa;
 
     /**
      * Creates new form GUIVenta
@@ -30,6 +41,14 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
         modeloTblDetalle.addColumn("Precio");
         modeloTblDetalle.addColumn("Cantidad");
         tblDetalle.setModel(modeloTblDetalle);
+        GUIHome ventana = new GUIHome();
+        this.miEmpresa = ventana.miEmpresa;
+        /*for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
+            String nombre = miEmpresa.getEquipos().get(i).getNombre();
+            String modelo = miEmpresa.getEquipos().get(i).getModelo();
+            double precio = miEmpresa.getEquipos().get(i).getPrecio();
+            modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});
+        }*/
     }
 
     /**
@@ -58,8 +77,16 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
         txtPrecio = new javax.swing.JTextField();
         lblCantidad = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
+        rbnAccesorio = new javax.swing.JRadioButton();
+        rbnParte = new javax.swing.JRadioButton();
+        rbnComputador = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         lblVendedor.setText("Vendedor:");
 
@@ -123,6 +150,17 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
 
         txtCantidad.setText("jTextField1");
 
+        rbnAccesorio.setText("Accesorios");
+        rbnAccesorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbnAccesorioActionPerformed(evt);
+            }
+        });
+
+        rbnParte.setText("Partes");
+
+        rbnComputador.setText("Computador");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,9 +174,16 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSeleccionar)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2))
+                        .addComponent(jScrollPane2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbnAccesorio)
+                                .addGap(55, 55, 55)
+                                .addComponent(rbnParte)
+                                .addGap(70, 70, 70)
+                                .addComponent(rbnComputador))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPrecio)
@@ -169,8 +214,12 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
                     .addComponent(lblVendedor)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblTipoProducto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoProducto)
+                    .addComponent(rbnAccesorio)
+                    .addComponent(rbnParte)
+                    .addComponent(rbnComputador))
+                .addGap(6, 6, 6)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSeleccionar)
@@ -211,6 +260,45 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
         // TODO add your handling code here:
         modeloTblDetalle.addRow(new Object[]{Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), Integer.parseInt(txtCantidad.getText())});
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        try{
+            if(rbnAccesorio.isSelected()){
+                for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
+                    if(miEmpresa.getEquipos().get(i) instanceof Accesorio){
+                        String nombre = miEmpresa.getEquipos().get(i).getNombre();
+                        String modelo = miEmpresa.getEquipos().get(i).getModelo();
+                        double precio = miEmpresa.getEquipos().get(i).getPrecio();
+                        modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});                        
+                    }                    
+                }
+            }
+            if(rbnParte.isSelected()){
+                for(int i = 0; i< miEmpresa.getEquipos().size(); i++){
+                    if(miEmpresa.getEquipos().get(i) instanceof Parte){
+                        String nombre = miEmpresa.getEquipos().get(i).getNombre();
+                        String modelo = miEmpresa.getEquipos().get(i).getModelo();
+                        double precio = miEmpresa.getEquipos().get(i).getPrecio();
+                        modeloTblProd.addRow(new Object[]{"", nombre, modelo, precio});                        
+                    }                    
+                }
+            }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void rbnAccesorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnAccesorioActionPerformed
+        // TODO add your handling code here:
+        try{
+            
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+    }//GEN-LAST:event_rbnAccesorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,6 +348,9 @@ DefaultTableModel modeloTblProd, modeloTblDetalle;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTipoProducto;
     private javax.swing.JLabel lblVendedor;
+    private javax.swing.JRadioButton rbnAccesorio;
+    private javax.swing.JRadioButton rbnComputador;
+    private javax.swing.JRadioButton rbnParte;
     private javax.swing.JTable tblDetalle;
     private javax.swing.JTable tblProductos;
     private javax.swing.JTextField txtCantidad;

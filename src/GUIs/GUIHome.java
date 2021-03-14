@@ -4,18 +4,39 @@
  * and open the template in the editor.
  */
 package GUIs;
+import java.util.ArrayList;
+import clases.Empresa;
+import clases.Administrador;
+import clases.Persona;
+import clases.Computador;
+import clases.Vendedor;
+import clases.Tecnico;
+import clases.Accesorio;
+import clases.Parte;
 
 /**
  *
  * @author Jerson Andino
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class GUIHome extends javax.swing.JFrame {
+    Empresa miEmpresa;
+    Administrador admin;
+    ArrayList<Persona> personas;
+    ArrayList<Computador> equipos;
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public GUIHome() {
         initComponents();
+        admin = new Administrador("1234", "Jerson", "Andino", "1004998678");
+        personas = new ArrayList<>();
+        personas.add(new Vendedor(0.1, 0, "Juan", "Perez", "1004897564"));
+        personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222"));
+        equipos = new ArrayList<>();
+        equipos.add(new Accesorio("3000", 25, "BLABLA"));
+        equipos.add(new Parte("2000", 35, "jhjh"));  
+        miEmpresa = new Empresa(admin, personas, equipos);
     }
 
     /**
@@ -27,21 +48,43 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(281, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(235, 235, 235))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(221, 221, 221)
+                .addComponent(jButton1)
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        GUIVenta ventana = new GUIVenta();
+        this.setVisible(false);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -60,25 +103,28 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new GUIHome().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

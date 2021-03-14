@@ -12,14 +12,20 @@ import java.util.ArrayList;
  * @author Jerson Andino
  */
 public class Venta {
-    protected int numVenta;
-    protected Vendedor vendedor;    
-    ArrayList<Computador> computadores = new ArrayList<>(); 
-    
-    public Venta(int numVenta, Vendedor vendedor, ArrayList<Computador> computadores){
+    private int numVenta;
+    private Vendedor vendedor;    
+    private ArrayList<DetalleVenta> detalles = new ArrayList<>();
+    private double totalVenta;
+        
+    public Venta(int numVenta, Vendedor vendedor, ArrayList<DetalleVenta> detalles){
         this.numVenta = numVenta;
         this.vendedor = vendedor;
-        this.computadores = computadores;
+        this.detalles = detalles;
+        double sum = 0;
+        for(int i=0; i<this.detalles.size(); i++){
+            sum += detalles.get(i).getPrecioTotal();
+        }
+        this.totalVenta = sum;
     }
         
 }
