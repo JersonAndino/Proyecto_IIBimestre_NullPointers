@@ -8,6 +8,8 @@ package GUIs;
 import clases.Administrador;
 import clases.Empleado;
 import clases.ListaEmpleados;
+import clases.ListaOrden;
+import clases.Orden;
 import clases.Tecnico;
 import clases.Vendedor;
 import javax.swing.JOptionPane;
@@ -54,7 +56,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbmDistribuidor = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtComponente = new javax.swing.JTextField();
@@ -215,7 +217,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         jLabel8.setText("Distribuidor:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTCOMEX", "IDC Computadoras", "XPC\t" }));
+        cbmDistribuidor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INTCOMEX", "IDC Computadoras", "XPC\t" }));
 
         jLabel9.setText("Componente:");
 
@@ -227,6 +229,11 @@ public class GUIAdministrador extends javax.swing.JFrame {
 
         btnPedido.setText("Realizar Pedido");
         btnPedido.setEnabled(false);
+        btnPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -235,24 +242,25 @@ public class GUIAdministrador extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtComponente, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel10)))
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(53, 53, 53)
+                            .addComponent(cbmDistribuidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel9)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtComponente, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                            .addGap(90, 90, 90)
+                            .addComponent(jLabel10)
+                            .addGap(26, 26, 26)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(144, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(205, 205, 205)
-                        .addComponent(btnPedido)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnPedido)
+                        .addContainerGap(278, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +268,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbmDistribuidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -400,6 +408,24 @@ public class GUIAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
+    private void btnPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidoActionPerformed
+        String componente;
+        int cantidad;
+        String Distribuidor="";
+        if(cbmDistribuidor.getSelectedItem().equals("INTCOMEX")){
+            Distribuidor="INTCOMEX";
+        }else if(cbmDistribuidor.getSelectedItem().equals("IDC Computadoras")){
+            Distribuidor="IDC Computadoras";
+        }else if(cbmDistribuidor.getSelectedItem().equals("XPC")){
+            Distribuidor="XPC";
+        }
+        componente=txtComponente.getText();
+        cantidad=Integer.parseInt(txtCantidad.getText());
+        ListaOrden ListOrden = new ListaOrden();
+        Orden o1 = new Orden(componente,cantidad,Distribuidor);
+        ListOrden.AgregarOrden(o1);
+    }//GEN-LAST:event_btnPedidoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -440,8 +466,8 @@ public class GUIAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnPedido;
     private javax.swing.JButton btnValidar;
+    private javax.swing.JComboBox<String> cbmDistribuidor;
     private javax.swing.JComboBox<String> cbmTipo;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
