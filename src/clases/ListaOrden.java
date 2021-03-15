@@ -19,5 +19,11 @@ public class ListaOrden {
 	public void AgregarOrden(Orden o1) {
 		ListOrden.add(o1);
 	}
-    
+        public void ImprimirLista(){
+            for(Orden e1:ListOrden){
+                System.out.println(e1.toString());
+            
+            }
+        
+        }
 }
