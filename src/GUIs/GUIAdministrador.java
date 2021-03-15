@@ -68,6 +68,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
         txtComponente = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         btnPedido = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -262,6 +263,13 @@ public class GUIAdministrador extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -284,6 +292,10 @@ public class GUIAdministrador extends javax.swing.JFrame {
                         .addGap(310, 310, 310)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnHome)
+                .addGap(296, 296, 296))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +313,9 @@ public class GUIAdministrador extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnHome)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -384,6 +398,14 @@ public class GUIAdministrador extends javax.swing.JFrame {
         ListOrden.AgregarOrden(o1);
     }//GEN-LAST:event_btnPedidoActionPerformed
 
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+
+        GUIHome ventana = new GUIHome();
+        ventana.setVisible(true);
+        this.setVisible(false);
+            // TODO add your handling code here:
+    }//GEN-LAST:event_btnHomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +444,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDesvincular;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPedido;
     private javax.swing.JComboBox<String> cbmDistribuidor;
     private javax.swing.JComboBox<String> cbmTipo;
