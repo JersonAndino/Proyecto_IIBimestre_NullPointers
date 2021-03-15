@@ -22,6 +22,7 @@ import clases.Datos;
 public class GUIAdministrador extends javax.swing.JFrame {
     Datos misDatos;
     ListaEmpleados empleados;
+    ListaOrden ordenes;
     ListaOrden ListOrden = new ListaOrden();
     ListaEmpleados ListEmpleado = new ListaEmpleados();
 
@@ -329,30 +330,31 @@ public class GUIAdministrador extends javax.swing.JFrame {
        
     if (txtNombre.getText().equals("")){
          
-         JOptionPane.showMessageDialog(this,"Nombre no ingresado ");
-         System.exit(0);
-       
+             JOptionPane.showMessageDialog(this,"Nombre no ingresado ");
+             System.exit(0);
+         
      }else if(txtApellido.getText().equals("")){
-     JOptionPane.showMessageDialog(this,"Apellido no ingresado ");
-     System.exit(0);
+            JOptionPane.showMessageDialog(this,"Apellido no ingresado ");
+            System.exit(0);
      }else if(txtCedula.getText().equals("")){
-     JOptionPane.showMessageDialog(this,"Cedula no ingresada ");
-     System.exit(0);
+            JOptionPane.showMessageDialog(this,"Cedula no ingresada ");
+             System.exit(0);
      }
-    Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
-      ListEmpleado.AgregarEmpleado(e1);
+             Vendedor e1 =new Vendedor (0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
+      misDatos.setPersonas(empleados.getListEmpleado());
     }
      if(cbmTipo.getSelectedItem().equals("Técnico")){
          
          Tecnico t1= new Tecnico(0.1,0,txtNombre.getText(),txtApellido.getText(),txtCedula.getText());
        
         
-         //misDatos.setPersonas(empleados.getListEmpleado());
+         
             if (txtNombre.getText()==null){
          
          JOptionPane.showMessageDialog(this,"Nombre no ingresado ");
          System.exit(0);
-          ListEmpleado.AgregarEmpleado(t1);
+         misDatos.setPersonas(empleados.getListEmpleado());
+         
      }
           
      } 
@@ -370,8 +372,8 @@ public class GUIAdministrador extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this,"Cedula no ingresada ");
         System.exit(0);
         }
-        ListEmpleado.getListEmpleado();
-        ListEmpleado.EliminarEmpleado(txtCedDespido.getText());
+        empleados.EliminarEmpleado(txtCedDespido.getText());
+        
                 
         
         
@@ -416,7 +418,7 @@ public class GUIAdministrador extends javax.swing.JFrame {
         cantidad=Integer.parseInt(txtCantidad.getText());
         
         Orden o1 = new Orden(componente,cantidad,Distribuidor);
-        ListOrden.AgregarOrden(o1);
+        ordenes.AgregarOrden(o1);
     }//GEN-LAST:event_btnPedidoActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed

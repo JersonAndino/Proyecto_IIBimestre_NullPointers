@@ -14,6 +14,7 @@ import clases.Vendedor;
 import clases.Tecnico;
 import clases.Accesorio;
 import clases.Empleado;
+import clases.Orden;
 import clases.Parte;
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,7 @@ public class GUIHome extends javax.swing.JFrame {
     Administrador admin;
     ArrayList<Empleado> personas;
     ArrayList<Computador> equipos;
+    ArrayList<Orden> ordenes;
 
     
     /**
@@ -37,6 +39,7 @@ public class GUIHome extends javax.swing.JFrame {
         
         
             admin = new Administrador("1234", "Jerson", "Andino", "1004998678");
+            ordenes =new ArrayList<>();
             personas = new ArrayList<>();
             personas.add(new Vendedor(0.1, 0, "Juan", "Perez", "1004897564"));
             personas.add(new Vendedor(0.1, 0, "Pedrin", "Perez", "12"));
