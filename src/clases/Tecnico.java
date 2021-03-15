@@ -11,14 +11,13 @@ package clases;
  */
 public class Tecnico extends Empleado{
     private double comision;
-    static int contador=1;
+    //static int contador=1;
     private String codigo;
 
-    public Tecnico(double comision, double ventas, String nombre, String apellido, String cedula) {
+    public Tecnico(double comision, double ventas, String nombre, String apellido, String cedula, String codigo) {
         super( ventas, nombre, apellido, cedula);
         this.comision = comision;
-        this.codigo="TEC"+contador;
-        contador++;
+        this.codigo=codigo;
     }
 
     public String getCodigo() {

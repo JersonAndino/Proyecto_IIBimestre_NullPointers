@@ -41,9 +41,9 @@ public class GUIHome extends javax.swing.JFrame {
             admin = new Administrador("1234", "Jerson", "Andino", "1004998678");
             ordenes =new ArrayList<>();
             personas = new ArrayList<>();
-            personas.add(new Vendedor(0.1, 0, "Juan", "Perez", "1004897564"));
-            personas.add(new Vendedor(0.1, 0, "Pedrin", "Perez", "12"));
-            personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222"));
+            personas.add(new Vendedor(0.1, 0, "Juan", "Perez", "1004897564", "1234"));
+            personas.add(new Vendedor(0.1, 0, "Pedrin", "Perez", "12", "1234"));
+            personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222", "1234"));
             equipos = new ArrayList<>();
             equipos.add(new Accesorio("3000", 25, "Auriculares Sony"));
             equipos.add(new Accesorio("GO3", 39.95, "Altavoz JBL"));
