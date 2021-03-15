@@ -42,8 +42,16 @@ public class GUIHome extends javax.swing.JFrame {
             personas.add(new Vendedor(0.1, 0, "Pedrin", "Perez", "12"));
             personas.add(new Tecnico(0.1, 0, "Felipe", "Contr", "22222"));
             equipos = new ArrayList<>();
-            equipos.add(new Accesorio("3000", 25, "BLABLA"));
-            equipos.add(new Parte("2000", 35, "jhjh"));
+            equipos.add(new Accesorio("3000", 25, "Auriculares Sony"));
+            equipos.add(new Accesorio("GO3", 39.95, "Altavoz JBL"));
+            equipos.add(new Accesorio("Buds Live", 40, "Auriculares inalámbricos Samsung"));
+            equipos.add(new Accesorio("Watch Active", 199.9, "SmartWatch Samsung"));
+            equipos.add(new Accesorio("Vive Cosmos Elite", 899, "Sistema VR HTC"));
+            equipos.add(new Parte("2000", 35, "Fuente de poder"));
+            equipos.add(new Parte("Aa-pb0nc6b", 60, "Baterá Laptop Samsung"));
+            equipos.add(new Parte("Core i5-8400", 139.9, "Procesador Intel 8va. generación"));
+            equipos.add(new Parte("Samsung 970 EVO", 89.39, "Disco Duro solido Samsung"));
+            equipos.add(new Parte("GTX 1070 Ti", 350, "GPU Nvidia"));
             misDatos = new Datos(admin, personas, equipos);
       
             
