@@ -370,8 +370,8 @@ public class GUIAdministrador extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this,"Cedula no ingresada ");
         System.exit(0);
         }
+        ListEmpleado.getListEmpleado();
         ListEmpleado.EliminarEmpleado(txtCedDespido.getText());
-      
                 
         
         
@@ -383,10 +383,34 @@ public class GUIAdministrador extends javax.swing.JFrame {
         String Distribuidor="";
         if(cbmDistribuidor.getSelectedItem().equals("INTCOMEX")){
             Distribuidor="INTCOMEX";
+            if (txtComponente.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Componente  no ingresado ");
+            System.exit(0);
+              if(txtCantidad.getText().equals("")){
+                    JOptionPane.showMessageDialog(this,"Cantidad  no ingresada ");
+                     System.exit(0);
+                    }
+            }
         }else if(cbmDistribuidor.getSelectedItem().equals("IDC Computadoras")){
             Distribuidor="IDC Computadoras";
+            if (txtComponente.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Componente  no ingresado ");
+            System.exit(0);
+              if(txtCantidad.getText().equals("")){
+                    JOptionPane.showMessageDialog(this,"Cantidad  no ingresada ");
+                     System.exit(0);
+                    }
+            }
         }else if(cbmDistribuidor.getSelectedItem().equals("XPC")){
             Distribuidor="XPC";
+            if (txtComponente.getText().equals("")){
+                JOptionPane.showMessageDialog(this,"Componente  no ingresado ");
+            System.exit(0);
+              if(txtCantidad.getText().equals("")){
+                    JOptionPane.showMessageDialog(this,"Cantidad  no ingresada ");
+                     System.exit(0);
+                    }
+            }
         }
         componente=txtComponente.getText();
         cantidad=Integer.parseInt(txtCantidad.getText());
