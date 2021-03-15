@@ -74,7 +74,7 @@ public class GUIMantenimiento extends javax.swing.JFrame {
         jLabel1.setText("Mantenimiento");
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Bienvenido, ");
+        jLabel2.setText("Bienvenido ");
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -87,6 +87,30 @@ public class GUIMantenimiento extends javax.swing.JFrame {
         jLabel32.setText("Número de Teléfono:");
 
         jLabel33.setText("Dirección:");
+
+        txtNombre4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombre4KeyTyped(evt);
+            }
+        });
+
+        txtApellido4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellido4KeyTyped(evt);
+            }
+        });
+
+        txtCedula4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedula4KeyTyped(evt);
+            }
+        });
+
+        txtNumTelefono4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumTelefono4KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -154,6 +178,12 @@ public class GUIMantenimiento extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Precio:");
+
+        txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecioKeyTyped(evt);
+            }
+        });
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Fecha:");
@@ -282,6 +312,51 @@ public class GUIMantenimiento extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void txtNombre4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombre4KeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo letras");
+        }
+    }//GEN-LAST:event_txtNombre4KeyTyped
+
+    private void txtApellido4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellido4KeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isDigit(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo letras");
+        }
+    }//GEN-LAST:event_txtApellido4KeyTyped
+
+    private void txtCedula4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedula4KeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+        }
+    }//GEN-LAST:event_txtCedula4KeyTyped
+
+    private void txtNumTelefono4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumTelefono4KeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+        }
+    }//GEN-LAST:event_txtNumTelefono4KeyTyped
+
+    private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
+        char validar = evt.getKeyChar();
+        if(Character.isLetter(validar)){
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "Ingresar solo números");
+        }
+    }//GEN-LAST:event_txtPrecioKeyTyped
    
     /**
      * @param args the command line arguments
