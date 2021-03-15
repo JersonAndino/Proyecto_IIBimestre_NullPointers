@@ -30,6 +30,12 @@ public class Venta {
         this.totalVenta = sum;
     }
 
+    public ArrayList<DetalleVenta> getDetalles() {
+        return detalles;
+    }
+
+    
+
     @Override
     public String toString() {
         return "Venta: NumVenta: " + numVenta + "\nCliente: " + cliente + "\nVendedor: " + vendedor + "\nDetalles: " + detalles + "\nTotalVenta: " + totalVenta + '}';

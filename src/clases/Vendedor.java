@@ -34,7 +34,7 @@ public class Vendedor extends Empleado{
 
     @Override
     public String toString() {
-        return "Vendedor: " + super.toString();
+        return super.toString();
     } 
     
 }

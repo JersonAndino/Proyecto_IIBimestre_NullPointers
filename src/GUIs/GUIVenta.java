@@ -114,6 +114,9 @@ DefaultComboBoxModel modeloCombo;
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Venta");
+        setBackground(new java.awt.Color(153, 255, 255));
+        setForeground(java.awt.Color.white);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -502,6 +505,9 @@ DefaultComboBoxModel modeloCombo;
             txtNombre.setText(modeloTblProd.getValueAt(index, 0).toString());
             txtPrecio.setText(modeloTblProd.getValueAt(index, 1).toString());
         }
+        catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un producto", "Advertencia", 2);
+        }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
         }
@@ -512,6 +518,9 @@ DefaultComboBoxModel modeloCombo;
         // TODO add your handling code here:
         try{
             modeloTblDetalle.addRow(new Object[]{txtNombre.getText(), Double.parseDouble(txtPrecio.getText()), txtModelo.getText(), Double.parseDouble(txtCantidad.getText()), Double.parseDouble(txtCantidad.getText()) * Double.parseDouble(txtPrecio.getText()) });
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar un número para la cantidad", "Advertencia", 2);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
@@ -603,6 +612,9 @@ DefaultComboBoxModel modeloCombo;
             */
             eliminarFila();
         }
+        catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un producto", "Advertencia", 2);
+        }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
         }
@@ -619,6 +631,9 @@ DefaultComboBoxModel modeloCombo;
             
             eliminarFila();
             
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar un producto", "Advertencia", 2);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
@@ -645,12 +660,16 @@ DefaultComboBoxModel modeloCombo;
                 temp.add(new DetalleVenta(aux, Double.parseDouble(modeloTblDetalle.getValueAt(i, 3).toString())));
             }
             //String numeroTelefonico, String Direccion, String nombre, String apellido, String cedula
-            Cliente cliente = new Cliente(txtTelefono.getText(), txaDireccion.getText(), txtNombreC.getText(), txtApellido.getText(), txtCedula.getText());
-            misDatos.getVentas().add(new Venta((misDatos.getVentas().size()+1), (Vendedor)misDatos.getPersonas().get(cont), temp, cliente));
-            //JOptionPane.showMessageDialog(rootPane, misDatos.getVentas().size());
-            txaFactura.setText(misDatos.getVentas().get(misDatos.getVentas().size()-1).toString());
-            modeloTblDetalle.setRowCount(0);
+            if(temp.size() > 0){
+                Cliente cliente = new Cliente(txtTelefono.getText(), txaDireccion.getText(), txtNombreC.getText(), txtApellido.getText(), txtCedula.getText());
+                misDatos.getVentas().add(new Venta((misDatos.getVentas().size()+1), (Vendedor)misDatos.getPersonas().get(cont), temp, cliente));
             
+                txaFactura.setText(misDatos.getVentas().get(misDatos.getVentas().size()-1).toString());
+                modeloTblDetalle.setRowCount(0);
+            }
+            else
+                JOptionPane.showMessageDialog(rootPane, "La lista de compras esta vacia", "Advertencia", 2);
+                        
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());

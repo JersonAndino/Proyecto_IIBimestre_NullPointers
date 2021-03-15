@@ -19,7 +19,7 @@ public class DetalleVenta {
         this.cantidad = cantidad;
         this.precioTotal = detalle.getPrecio()*this.cantidad;
     }
-
+    
     public Computador getDetalle() {
         return detalle;
     }
